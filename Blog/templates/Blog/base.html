@@ -1,0 +1,149 @@
+
+{% load static %}
+{% load post_tag %}
+
+
+<!DOCTYPE html >
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'Blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Blog/css/main.css' %}">
+    {% if title %}
+    <title>طيب الاطباء | {{title}}</title>
+    {% else %}
+    <title>طيب الاطباء </title>
+    {% endif %}
+</head>
+<body>
+
+<header>
+    <!-- start navbar ---->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'blog/images/health.png' %}" alt="شعار المدونة" width="40px">
+      طيب الاطباء
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">الرئسية <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="#">فرع ثانوي <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="#">مواضيع <span class="sr-only">(current)</span></a>
+      </li>
+          <li class="nav-item active">
+        <a class="nav-link" href="{% url 'about' %}">حول <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          دروس
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">فوتو شوب</a>
+          <a class="dropdown-item" href="#">اكسيون</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">افر افيكت</a>
+        </div>
+      </li>
+    </ul>
+      <ul class="navbar-nav mr-auto" >
+
+            {% if request.user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'newpost' %}">تدوينة جديدة</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">الملف الشخصي</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">تسجيل الخروج</a></li>
+
+           {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">الدخول</a></li>
+
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">تسجيل الدخول</a></li>
+          {% endif %}
+      </ul>
+  </div>
+</nav>
+    <!-- end of navbar ---->
+</header>
+    <!-- start of body ---->
+<section>
+    <div class="container">
+      <div class="row mt-4">  <!--  row kat3ni saaf ---->
+        <div class="col-md-8">
+            {% block content %}
+
+            {% endblock content %}
+
+        </div>  <!--  # col kat3ni 3amod ---->
+        <div class="col-md-4">
+        <div class="card mb-3">
+            <h3 class="text-center bg-success text-light p-2">اخر المواضيع</h3> <!-- bg kat3ni background ---->
+               {% latests_posts %}
+        </div>
+           <div class="card mb-3">
+            <h3 class="text-center bg-success text-light p-2" color-black>اخر التعليقات</h3>
+              {% latests_comments %}
+        </div>
+
+        </div>
+
+       </div>
+    </div>
+</section>
+    <!-- end of body ---->
+    <!-- start of footer maghadix ndirouh f section---->
+<footer class="bg-success">
+<div class="container-fluid"><!-- ha ghadi ndiro ga3 lmoutawayat ta3 lfooter ---->
+    <div class="row">
+       <div class="col-md">
+           <div class="card-group  mt-3">
+               <div class="card m-3">
+                    <h3 class="card-title text-center border-bottom p-2 m-3">من انا</h3>
+                   <div class="text-center"><img src="{% static 'blog/images/health.png' %}" alt="شعار المدونة" width="100px"></div>
+                   <div class="text-center m-4">هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط هذا مثال فقط</div>
+               </div>
+               <div class="card m-3">
+                    <h3 class="card-title text-center border-bottom p-2 m-3">مواقعنا التواصل</h3>
+                       <h3 class="card-body text-center">
+                       <a href="#" class="text-secondary"><i class="fab fa-facebook"></i> </a><!------ fontawesomebrand fontawesome-facebook ------>
+                       <a href="#" class="text-secondary"><i class="fab fa-instagram"></i></a>
+                      <a href="#" class="text-secondary"><i class="fab fa-twitter"></i></a>
+                      <a href="#" class="text-secondary"> <i class="fab fa-youtube"></i></a>
+                       </h3>
+               </div>
+                  <div class="card m-3">
+                    <h3 class="card-title text-center border-bottom p-2 m-3">مواقعنا الاخرى</h3>
+                   <ul>
+                       <li><a href="www.facebook.com">كود كام يون</a></li>
+                       <li><a href="www.google.com">مساحة</a></li>
+                       <li><a href="www.instagram.com">كود اكاديمي</a></li>
+                       <li><a href="www.youtube.com">المحترف</a></li>
+                   </ul>
+               </div>
+           </div>
+       </div>
+    </div>
+<div class="row p-2"><!-- ghadi ndiro fih ghir ktaba kat3ni kol lho9o9 mahfoda ---->
+   <div class="col-md text-center">
+        <small class="text-light">&copy;جميع الحقوق محفوظة</small>
+   </div>
+</div>
+</div>
+</footer>
+    <!-- end of footer ---->
+
+     <script src="{% static 'Blog/js/jquery-3.3.1.slim.min.js' %}"></script>
+     <script src="{% static 'Blog/js/popper.min.js' %}"></script>
+     <script src="{% static 'Blog/js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'Blog/js/all.js' %}"></script>
+
+</body>
+</html>

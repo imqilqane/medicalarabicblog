@@ -1,0 +1,36 @@
+@font-face {
+   Font-family :'Almarai' ;
+   Src : url('../fonts/Almarai-Regular.ttf') format("truetype");
+   local('Almarai');
+   }
+html ,body {
+   direction : rtl ;
+   text-align : right;
+
+   }
+body {
+   Font-family: 'Almarai' , Regular;
+   }
+.dropdown-menu .dropdown-item {
+    text-align: right;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,.7);
+}
+.bg-light {
+    background-color: #f7f7f7 !important;
+}
+.bg-success {
+    background-color: #f7f7f7 !important;
+}
+.text-light {
+    color: #313233!important;
+}
+
+
+/* start post content */
+.post {
+border : 1px solid #ccc ;
+}
+/* end post content */
+

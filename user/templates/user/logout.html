@@ -1,0 +1,14 @@
+{% extends 'Blog/base.html' %}
+{% block content %}
+
+
+{% load crispy_forms_tags %}
+<div class="border pl-4 pr-4  ">
+<h3 class="border-bottom pb-3 mb-3 mt-5">تسجيل الدخول</h3>
+    <div class="alert alert-success">لقد تم تسجيل الخروج بنجاح</div>
+
+<div class=" pt-2 pb-4 ">
+    <a href="{% url 'login'%}">تسجيل الدخول ثانية</a>
+</div>
+</div>
+{% endblock content %}
